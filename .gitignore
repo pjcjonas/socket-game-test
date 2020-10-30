@@ -1,0 +1,7 @@
+\node_modules
+\dist
+*.css.d.ts
+.vscode
+.vs
+.tscache
+.awcache
