@@ -21,6 +21,7 @@ export const initWebSockets = (http: any) => {
         });
 
         socket.on("player movement", (movement: IPlayerMovement) => {
+            console.log(movement);
             players.map((player: IPlayerData) => {
                 if (player.id === socket.id) {
                     player.movement = movement;
