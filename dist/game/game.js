@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-// @ts-ignore
 var socket = io("http://localhost:3000");
 var movement = {
     up: false,

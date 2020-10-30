@@ -6,13 +6,13 @@ let players: IPlayerData[] = [];
 
 export const initWebSockets = (http: any) => {
     io = require("socket.io")(http);
-    
 
     // SOCKET CONNECTION TAKES PLACE
     io.on("connection", (socket: any) => {
         socket.on("new player", () => {
             addConnectedPlayer(socket);
-            socket.emit('connection info', players[socket.id]);
+            const player = players.find((p) => p.id === socket.id);
+            socket.emit('connection info', player);
             socket.emit('other players', getOtherPlayers(socket.id));
         });
 

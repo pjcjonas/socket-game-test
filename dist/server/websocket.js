@@ -10,7 +10,9 @@ exports.initWebSockets = function (http) {
     io.on("connection", function (socket) {
         socket.on("new player", function () {
             addConnectedPlayer(socket);
-            socket.emit('connection info', players[socket.id]);
+            var player = players.find(function (p) { return p.id === socket.id; });
+            console.log('connection info', player);
+            socket.emit('connection info', player);
             socket.emit('other players', getOtherPlayers(socket.id));
         });
         socket.on("user disconnected", function () {

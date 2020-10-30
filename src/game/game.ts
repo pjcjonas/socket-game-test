@@ -1,6 +1,17 @@
-import { IPlayerData, IPlayerMovement } from "../server/interfaces";
-
 var socket = io("http://localhost:3000");
+
+interface IPlayerData{
+    id: string;
+    name: string;
+    movement?: IPlayerMovement;
+}
+
+interface IPlayerMovement {
+    up: boolean;
+    down: boolean;
+    left: boolean;
+    right: boolean;
+}
 
 let movement: IPlayerMovement = {
     up: false,
