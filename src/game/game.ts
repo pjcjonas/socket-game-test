@@ -1,18 +1,8 @@
+import { IPlayerData, IPlayerMovement } from "../server/interfaces/index";
+import { GameWorld } from "./modules/world/index";
+
+// @ts-ignore
 var socket = io("http://localhost:3000");
-
-interface IPlayerData{
-    id: string;
-    name: string;
-    movement?: IPlayerMovement;
-}
-
-interface IPlayerMovement {
-    up: boolean;
-    down: boolean;
-    left: boolean;
-    right: boolean;
-}
-
 let movement: IPlayerMovement = {
     up: false,
     down: false,
@@ -29,6 +19,19 @@ class Game {
         this.getMyPlayerConnection();
         this.onBeforCloseEvent();
         this.setKeboardEvents();
+        this.loadGameWorld();
+    }
+
+    private loadGameWorld = () => {
+        const config = {
+            type: Phaser.AUTO,
+            backgroundColor: '#125555',
+            width: 800,
+            height: 600,
+            scene: GameWorld
+        };
+        
+        const game = new Phaser.Game(config);
     }
 
     private connectPlayer = () => {

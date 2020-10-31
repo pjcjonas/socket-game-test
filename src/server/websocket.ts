@@ -1,4 +1,4 @@
-import { IPlayerData, IPlayerMovement } from "./interfaces";
+import { IPlayerData, IPlayerMovement } from "./interfaces/index";
 
 // Properties
 let io: any = null;
